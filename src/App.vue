@@ -1,9 +1,12 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <amplify-authenticator>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <amplify-sign-out></amplify-sign-out>
+  </amplify-authenticator>
+  <router-view />
 </template>
 
 <style>
