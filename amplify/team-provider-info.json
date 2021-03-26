@@ -10,6 +10,11 @@
       "StackName": "amplify-checkt-dev-111026",
       "StackId": "arn:aws:cloudformation:us-west-2:353049360875:stack/amplify-checkt-dev-111026/62006a50-8d95-11eb-a297-0665d51f899d",
       "AmplifyAppId": "dmy6un2zm76n7"
+    },
+    "categories": {
+      "auth": {
+        "checktb5aa610e": {}
+      }
     }
   }
 }
