@@ -2,7 +2,7 @@
   <div id="app">
     <TheHeader />
     <amplify-authenticator>
-      
+       <amplify-sign-out />
     </amplify-authenticator>
     <router-view />
   </div>
@@ -31,6 +31,7 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   max-width: 100%;
+  max-height: 100vh;
   font-size: 62.5%;
 }
 
