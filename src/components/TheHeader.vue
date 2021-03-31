@@ -1,18 +1,32 @@
 <template>
   <header id="navbar">
+    <h1
+      class="absolute left-4 p-2 text-2xl bg-green-400 border-4 border-white-400 rounded-xl text-green-800"
+    >
+      {{ getUser.username }}
+    </h1>
     <h1 class="title">Check't</h1>
     <nav id="nav">
       <router-link class="nav-item" to="/">Home</router-link> |
       <router-link class="nav-item" to="/about">About</router-link>
-      <amplify-sign-out />
+     
     </nav>
   </header>
 </template>
 
 <script>
-import {defineComponent} from 'vue'
+import { defineComponent } from "vue";
+import { mapGetters, mapActions } from "vuex";
+
 export default defineComponent({
   name: "TheHeader",
+  computed: mapGetters(["getUser"]),
+  methods: {
+    ...mapActions(["fetchUser"]),
+  },
+  created() {
+    this.fetchUser();
+  },
 });
 </script>
 
@@ -38,7 +52,7 @@ export default defineComponent({
   right: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-around;
 }
 
 #nav a {
