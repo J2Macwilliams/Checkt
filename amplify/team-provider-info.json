@@ -1,19 +1,25 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-checkt-dev-111026-authRole",
-      "UnauthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-111026-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-111026-authRole",
+      "AuthRoleName": "amplify-checkt-dev-162813-authRole",
+      "UnauthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-162813-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-162813-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-checkt-dev-111026-deployment",
-      "UnauthRoleName": "amplify-checkt-dev-111026-unauthRole",
-      "StackName": "amplify-checkt-dev-111026",
-      "StackId": "arn:aws:cloudformation:us-west-2:353049360875:stack/amplify-checkt-dev-111026/62006a50-8d95-11eb-a297-0665d51f899d",
-      "AmplifyAppId": "dmy6un2zm76n7"
+      "DeploymentBucketName": "amplify-checkt-dev-162813-deployment",
+      "UnauthRoleName": "amplify-checkt-dev-162813-unauthRole",
+      "StackName": "amplify-checkt-dev-162813",
+      "StackId": "arn:aws:cloudformation:us-west-2:353049360875:stack/amplify-checkt-dev-162813/9a9da8a0-91af-11eb-bdea-0232f2d1b387",
+      "AmplifyAppId": "d2tvjlevj3sonu"
     },
     "categories": {
       "auth": {
-        "checktb5aa610e": {}
+        "checkt7959dc60": {}
+      },
+      "function": {
+        "checktlambda": {
+          "deploymentBucketName": "amplify-checkt-dev-162813-deployment",
+          "s3Key": "amplify-builds/checktlambda-5836774d305377446f69-build.zip"
+        }
       }
     }
   }

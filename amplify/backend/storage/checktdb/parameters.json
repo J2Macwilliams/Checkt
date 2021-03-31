@@ -1,0 +1,7 @@
+{
+    "tableName": "checktdb",
+    "partitionKeyName": "userId",
+    "partitionKeyType": "S",
+    "sortKeyName": "id",
+    "sortKeyType": "S"
+}
