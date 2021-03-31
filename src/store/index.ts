@@ -1,9 +1,11 @@
 import {createStore}  from 'vuex'
-import items from './modules/items'
+
+import ItemsModule from './modules/ItemsModule'
+
 
 export const store = createStore({
  modules: {
-   items,
+   ItemsModule
  }
 })
 
