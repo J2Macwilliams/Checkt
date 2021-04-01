@@ -1,7 +1,8 @@
 <template>
-  <div class="flex flex-col items-center h-screen">
+  <div class="flex flex-col pt-16 items-center h-full">
     <AddItem />
     <ListItems />
+   
   </div>
 </template>
 
