@@ -1,6 +1,9 @@
 export interface State {
 items: Item[],
-user: User
+user: any,
+authState: any,
+unsubscribeAuth: () => void,
+isNavOpen: boolean,
 }
 
 export type Item = {
@@ -22,3 +25,4 @@ type Attributes = {
   phone_number: string,
   phone_number_verified: string,
 }
+
