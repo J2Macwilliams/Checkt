@@ -4,6 +4,11 @@ user: any,
 authState: any,
 unsubscribeAuth: () => void,
 isNavOpen: boolean,
+stores: Store[]
+}
+export interface User {
+username: string,
+attributes: Attributes
 }
 
 export type Item = {
@@ -13,10 +18,10 @@ export type Item = {
   store: string,
   bought: boolean
 }
-
-export interface User {
-username: string,
-attributes: Attributes
+export type Store = {
+  id: string,
+  store: string,
+  color: string
 }
 
 type Attributes = {
