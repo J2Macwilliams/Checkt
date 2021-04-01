@@ -11,7 +11,7 @@ import {
   defineCustomElements,
 } from '@aws-amplify/ui-components/loader';
 
-import './assets/tailwind.css'
+import './style/tailwind.css'
 
 Amplify.configure(aws_exports);
 applyPolyfills().then(() => {
