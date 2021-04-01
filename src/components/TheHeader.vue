@@ -1,58 +1,77 @@
 <template>
   <header id="navbar">
-    <h1
-      class="absolute left-4 p-2 text-2xl bg-green-400 border-4 border-white-400 rounded-xl text-green-800"
-    >
-      {{ getUser.username }}
-    </h1>
     <h1 class="title">Check't</h1>
-    <nav id="nav">
-      <router-link class="nav-item" to="/">Home</router-link> |
-      <router-link class="nav-item" to="/about">About</router-link>
-     
-    </nav>
+    <div v-if="getAuthState === 'signedin'">
+      <Burger class="lg:hidden flex justify-end" />
+
+      <nav
+        id="nav"
+        class="lg:flex lg:visible hidden ease-in-out "
+        :class="{ active: getNavStatus }"
+      >
+        <ul class="lg:flex items-center justify-between">
+          <li><router-link class="nav-item" to="/">Home</router-link></li>
+          <li>
+            <router-link class="nav-item" to="/about">About</router-link>
+          </li>
+          <li><span @click="signOut" class="sign-out">SignOut</span></li>
+        </ul>
+      </nav>
+    </div>
   </header>
+  <div
+    class="overlay"
+    :class="{ active: getNavStatus }"
+    @click.prevent="toggleNav"
+  ></div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
+import { Auth } from "aws-amplify";
+import Burger from "./menu/Burger";
 
 export default defineComponent({
   name: "TheHeader",
-  computed: mapGetters(["getUser"]),
+  components: { Burger },
+  computed: mapGetters(["getAuthState", "getNavStatus"]),
   methods: {
-    ...mapActions(["fetchUser"]),
-  },
-  created() {
-    this.fetchUser();
+    ...mapMutations(["toggleNav"]),
+    signOut() {
+      Auth.signOut();
+    },
   },
 });
 </script>
 
 <style scoped>
 #navbar {
+  position: fixed;
+  width: 100%;
   background: #2c3e50;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  padding: 7px;
+  z-index: 10;
 }
 
 .title {
-  font-size: 3.4rem;
-  color: #fdfdfd;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
 }
 
 .title::first-letter {
   color: #42b983;
 }
 
-#nav {
-  position: absolute;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+#nav.active {
+  display: block;
+  visibility: visible;
 }
 
 #nav a {
@@ -70,7 +89,29 @@ export default defineComponent({
   color: #42b983;
 }
 
-/* .sign-out {
-  color: #42b983;
-} */
+.sign-out {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #afafaf;
+  margin: 0 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.overlay {
+  z-index: 1;
+}
+.overlay.active {
+  background-color: rgba(19, 15, 64, 0.4);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+li {
+  text-decoration: none;
+}
 </style>
