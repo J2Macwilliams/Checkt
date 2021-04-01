@@ -1,11 +1,12 @@
 <template>
-  <div class="w-5/6 grid grid-cols-3 grid-flow-row border-2 rounded-lg">
+
+  <div class=" grid md:grid-cols-3 grid-flow-row border-2 rounded-lg w-5/6 ">
     <div :key="item.id" v-for="item in allItems" class="text-xl flex items-center justify-between p-2 m-2 border-2 bg-green-600 rounded-lg text-white">
       <h1 >
         {{ item.name }}
       </h1>
       <h2>{{item.store}}</h2>
-      <button >X</button>
+      <i class="fas fa-times"></i>
     </div>
   </div>
 </template>
