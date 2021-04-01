@@ -1,20 +1,34 @@
 <template>
   <div id="app">
-    <TheHeader />
+     <TheHeader />
     <amplify-authenticator>
-       <amplify-sign-out />
+       <router-view />
     </amplify-authenticator>
-    <router-view />
+    
   </div>
 </template>
 
 <script >
+
 import { defineComponent } from "vue";
 import TheHeader from "./components/TheHeader";
+import { mapActions } from "vuex";
+
 export default defineComponent({
+  name: 'App',
   components: {
     TheHeader,
   },
+  methods: {
+    ...mapActions(['triggerAuth', 'clearAuth'])
+  },
+  created() {
+this.triggerAuth();
+    
+  },
+  beforeUnmount() {
+    this.clearAuth();
+  }
 });
 </script>
 <style>
@@ -23,17 +37,27 @@ export default defineComponent({
   padding: 0;
   box-sizing: border-box;
   max-width: 100%;
+  
+  
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  background: #dffaea;
   max-width: 100%;
+  height: 100vh;
   max-height: 100vh;
   font-size: 62.5%;
 }
+
+:root {
+  --amplify-primary-color: #42b983;
+  --amplify-primary-tint: #afafaf;
+  --amplify-primary-shade: #2c3e50;
+}
+
 
 
 </style>
