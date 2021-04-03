@@ -134,7 +134,7 @@ export default {
       const data = {
         id: v4(),
         name: this.name,
-        qty: parseInt(this.qty),
+        qty: this.qty,
         store: this.store,
         bought: false,
       };
