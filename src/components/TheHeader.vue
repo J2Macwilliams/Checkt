@@ -6,11 +6,13 @@
 
       <nav
         id="nav"
-        class="lg:flex lg:visible hidden ease-in-out "
+        class="lg:flex lg:visible hidden ease-in-out"
         :class="{ active: getNavStatus }"
       >
         <ul class="lg:flex items-center justify-between">
-          <li><router-link class="nav-item" to="/">Home</router-link></li>
+          <li @click.prevent="toggleNav">
+            <router-link class="nav-item" to="/">Shopping</router-link>
+          </li>
           <li>
             <router-link class="nav-item" to="/about">About</router-link>
           </li>
@@ -49,6 +51,7 @@ export default defineComponent({
 #navbar {
   position: fixed;
   width: 100%;
+  min-height: 50px;
   background: #2c3e50;
   display: flex;
   justify-content: flex-end;
