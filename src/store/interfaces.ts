@@ -1,5 +1,6 @@
 export interface State {
 items: Product[],
+filteredItems: Product[],
 user: any,
 authState: any,
 unsubscribeAuth: () => void,
