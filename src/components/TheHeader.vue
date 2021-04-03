@@ -21,11 +21,7 @@
       </nav>
     </div>
   </header>
-  <div
-    class="overlay"
-    :class="{ active: getNavStatus }"
-    @click.prevent="toggleNav"
-  ></div>
+ 
 </template>
 
 <script>
