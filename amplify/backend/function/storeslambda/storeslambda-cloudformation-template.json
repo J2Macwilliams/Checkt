@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagechecktdbName": {
+    "storagestoresdbName": {
       "Type": "String",
-      "Default": "storagechecktdbName"
+      "Default": "storagestoresdbName"
     },
-    "storagechecktdbArn": {
+    "storagestoresdbArn": {
       "Type": "String",
-      "Default": "storagechecktdbArn"
+      "Default": "storagestoresdbArn"
     }
   },
   "Conditions": {
@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "checktlambda",
+            "storeslambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "checktlambda",
+                  "storeslambda",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "checktLambdaRoleb1aaa106",
+            "checktLambdaRole09a91433",
             {
               "Fn::Join": [
                 "",
                 [
-                  "checktLambdaRoleb1aaa106",
+                  "checktLambdaRole09a91433",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storagechecktdbArn"
+                  "Ref": "storagestoresdbArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagechecktdbArn"
+                        "Ref": "storagestoresdbArn"
                       },
                       "index/*"
                     ]

@@ -1,19 +1,27 @@
 export interface State {
-items: Item[],
-user: User
+items: Product[],
+user: any,
+authState: any,
+unsubscribeAuth: () => void,
+isNavOpen: boolean,
+stores: Store[]
 }
-
-export type Item = {
-  id: string,
-  qty: number,
-  name: string,
-  store: string,
-  bought: boolean
-}
-
 export interface User {
 username: string,
 attributes: Attributes
+}
+
+export type Product = {
+  id: string,
+  qty: number,
+  name: string,
+  store: Store,
+  bought: boolean
+}
+export type Store = {
+  id: string,
+  name: string,
+  color: string
 }
 
 type Attributes = {
@@ -22,3 +30,4 @@ type Attributes = {
   phone_number: string,
   phone_number_verified: string,
 }
+
