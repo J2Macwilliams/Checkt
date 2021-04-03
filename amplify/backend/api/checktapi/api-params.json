@@ -14,6 +14,21 @@
                 ]
             },
             "policyResourceName": "/items"
+        },
+        {
+            "name": "/stores",
+            "lambdaFunction": "storeslambda",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/stores"
         }
     ],
     "resourceName": "checktapi",
@@ -21,18 +36,29 @@
     "functionArns": [
         {
             "lambdaFunction": "checktlambda"
+        },
+        {
+            "lambdaFunction": "storeslambda"
         }
     ],
     "privacy": {
-        "auth": 1,
+        "auth": 2,
         "unauth": 0,
-        "authRoleName": "amplify-checkt-dev-162813-authRole",
-        "unAuthRoleName": "amplify-checkt-dev-162813-unauthRole"
+        "authRoleName": "amplify-checkt-dev-95542-authRole",
+        "unAuthRoleName": "amplify-checkt-dev-95542-unauthRole"
     },
     "dependsOn": [
         {
             "category": "function",
             "resourceName": "checktlambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "storeslambda",
             "attributes": [
                 "Name",
                 "Arn"

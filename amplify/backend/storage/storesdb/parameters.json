@@ -1,0 +1,7 @@
+{
+    "tableName": "storesdb",
+    "partitionKeyName": "userId",
+    "partitionKeyType": "S",
+    "sortKeyName": "id",
+    "sortKeyType": "S"
+}
