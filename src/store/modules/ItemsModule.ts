@@ -4,7 +4,6 @@ import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 const state = {
   items: [],
-  filteredItems: [],
   stores: [],
   user: undefined,
   authState: undefined,
@@ -17,7 +16,7 @@ const getters = {
   getNavStatus: (state: State) => state.isNavOpen,
   getAuthState: (state: State) => state.authState,
   allItems: (state: State) => state.items,
-  filteredItems: (state: State) => state.filteredItems,
+  filteredItems: (state: State) => (store: string) => state.items.filter(item => store.length > 0 ? item.store.name === store : item),
   allStores: (state: State) => state.stores
 }
 
@@ -46,10 +45,14 @@ const actions = {
     await API.del('checktapi', `/stores/object/id/${id}`, {})
     commit('removeStore', id)
   },
-  async searchItems({ commit }: { commit: Function }, name: string) {
-    const response = await state.items.filter((item: Product) => item.store.name.match(name))
-    commit('setFilteredItems', response)
-  },
+  // searchItems({ commit }: { commit: Function }, name: string) {
+    
+  //     const payload = state.items.filter((item: Product) => item.store.name.match(name))
+  //   console.log(payload)
+  //   commit('setFilteredItems', payload)
+  
+    
+  // },
 
 }
 
@@ -61,13 +64,13 @@ const mutations = {
   })),
   clearAuth: (state: State) => state.unsubscribeAuth(),
   // coming from actions
-  setItems: (state: State, items: Product[]) => (state.items = items, state.filteredItems = items),
-  newItem: (state: State, item: Product) => (state.filteredItems.unshift(item)),
+  setItems: (state: State, items: Product[]) => (state.items = items),
+  newItem: (state: State, item: Product) => (state.items = [item, ...state.items]),
   setStores: (state: State, stores: Store[]) => (state.stores = stores),
   newStore: (state: State, store: Store) => (state.stores.unshift(store)),
-  removeItem: (state: State, id: string) => (state.filteredItems = state.filteredItems.filter(item => item.id !== id)),
+  removeItem: (state: State, id: string) => ( state.items = state.items.filter(item => item.id !== id)),
   removeStore: (state: State, id: string) => (state.stores = state.stores.filter(store => store.id !== id)),
-  setFilteredItems: (state: State, payload: Product[]) => (state.filteredItems = payload)
+  // setFilteredItems: (state: State, payload: Product[]) => (state.filteredItems = payload)
 }
 
 export default { state, getters, actions, mutations }
