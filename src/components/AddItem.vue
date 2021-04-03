@@ -138,7 +138,7 @@ export default {
         store: this.store,
         bought: false,
       };
-      console.log(`data`, data);
+      
       this.addItem(data);
       this.name = "";
       this.qty = 1;
@@ -149,7 +149,7 @@ export default {
         name: this.newStore,
         color: this.color,
       };
-      // console.log(data)
+      
       this.addStore(data);
       this.newStore = "";
       this.color = "";
