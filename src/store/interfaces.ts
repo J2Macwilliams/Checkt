@@ -1,5 +1,5 @@
 export interface State {
-items: Item[],
+items: Product[],
 user: any,
 authState: any,
 unsubscribeAuth: () => void,
@@ -11,16 +11,16 @@ username: string,
 attributes: Attributes
 }
 
-export type Item = {
+export type Product = {
   id: string,
   qty: number,
   name: string,
-  store: string,
+  store: Store,
   bought: boolean
 }
 export type Store = {
   id: string,
-  store: string,
+  name: string,
   color: string
 }
 
