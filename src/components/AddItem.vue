@@ -1,15 +1,7 @@
 <template>
-  <!-- <div class="w-2/3  ml-2 flex flex-wrap justify-around">
-      <div :key="store.id" v-for="store in allStores">
-        <button
-          class="text-md text-white p-2 border-2 rounded-lg bg-white whitespace-nowrap"
-          :style="{ background: store.color }"
-        >
-          <p>{{ store.name }}</p>
-        </button>
-      </div>
-    </div> -->
-  <article class="w-full flex justify-end p-2">
+  <article class="w-full flex justify-between p-2">
+     <div class="text-3xl font-bold">Shopping List</div>
+     <aside>
     <span
       id="add-icon-box"
       :class="{ active: isStoreFormOpen }"
@@ -34,10 +26,11 @@
         @click.prevent="toggleShoppingForm"
       ></i>
     </span>
+    </aside>
   </article>
 
   <div
-    class="w-5/6 mb-2 box-border border-2 border-gray-600 rounded-lg text-xl p-1"
+    class="w-5/6 m-4 box-border border-2 border-gray-600 rounded-lg text-xl p-1"
     v-if="isStoreFormOpen"
   >
     <form @submit.prevent="createStore">
@@ -76,9 +69,10 @@
   <form
     v-if="isShoppingFormOpen"
     @submit.prevent="onSubmitItem"
-    class="md:flex justify-between border-2 border-green-600 rounded-lg text-xl m-2 p-1"
+    class="max-w-5/6 md:flex lg:flex xl-flex items-center border-2 border-green-600 rounded-lg text-xl m-2 p-1"
   >
     <div>
+      <label for="qty">qty</label>
       <input
         class="w-1/6 m-1 border-2 border-green-800 rounded-lg p-2"
         type="number"
@@ -106,7 +100,7 @@
     </div>
     <input
       type="submit"
-      class=" w-full md:w-1/2 lg:w-1/4 p-2 bg-green-400 border-2 border-green-600 rounded-lg text-green-800"
+      class="w-full md:w-1/2 lg:w-1/4 p-2 bg-green-400 border-2 border-green-600 rounded-lg text-green-800"
       value="submit"
     />
   </form>
@@ -121,7 +115,7 @@ export default {
   computed: mapGetters(["allStores"]),
   data() {
     return {
-      qty: Number,
+      qty: 1,
       name: "",
       store: {
         id: Number,
@@ -140,14 +134,14 @@ export default {
       const data = {
         id: v4(),
         name: this.name,
-        qty: this.qty,
+        qty: parseInt(this.qty),
         store: this.store,
         bought: false,
       };
-
+      console.log(`data`, data);
       this.addItem(data);
-      this.name= "";
-      this.qty = Number;
+      this.name = "";
+      this.qty = 1;
     },
     createStore() {
       const data = {
@@ -167,9 +161,9 @@ export default {
       return (this.isShoppingFormOpen = !this.isShoppingFormOpen);
     },
   },
-  created(){
+  created() {
     this.fetchStores();
-  }
+  },
 };
 </script>
 
