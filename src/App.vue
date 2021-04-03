@@ -45,6 +45,7 @@ export default defineComponent({
   height: 100vh;
   max-height: 100vh;
   font-size: 62.5%;
+  overflow-y: scroll;
 }
 
 :root {
