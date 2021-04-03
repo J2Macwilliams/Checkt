@@ -1,34 +1,31 @@
 <template>
   <div id="app">
-     <TheHeader />
+    <TheHeader />
     <amplify-authenticator>
-       <router-view />
+      <router-view />
     </amplify-authenticator>
-    
   </div>
 </template>
 
 <script >
-
 import { defineComponent } from "vue";
 import TheHeader from "./components/TheHeader";
-import { mapActions } from "vuex";
+import { mapMutations } from "vuex";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     TheHeader,
   },
   methods: {
-    ...mapActions(['triggerAuth', 'clearAuth'])
+    ...mapMutations(["setAuth", "clearAuth"]),
   },
   created() {
-this.triggerAuth();
-    
+    this.setAuth();
   },
   beforeUnmount() {
     this.clearAuth();
-  }
+  },
 });
 </script>
 <style>
@@ -37,8 +34,6 @@ this.triggerAuth();
   padding: 0;
   box-sizing: border-box;
   max-width: 100%;
-  
-  
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -57,7 +52,4 @@ this.triggerAuth();
   --amplify-primary-tint: #afafaf;
   --amplify-primary-shade: #2c3e50;
 }
-
-
-
 </style>
