@@ -1,30 +1,36 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-checkt-dev-95542-authRole",
-      "UnauthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-95542-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-95542-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-checkt-dev-95542-deployment",
-      "UnauthRoleName": "amplify-checkt-dev-95542-unauthRole",
-      "StackName": "amplify-checkt-dev-95542",
-      "StackId": "arn:aws:cloudformation:us-west-2:353049360875:stack/amplify-checkt-dev-95542/4493f870-93d4-11eb-a8c0-0ab064636201",
-      "AmplifyAppId": "d2tz6gamr0cndr"
-    },
-    "categories": {
-      "auth": {
-        "checktfee7a8ce": {}
-      },
-      "function": {
-        "checktlambda": {
-          "deploymentBucketName": "amplify-checkt-dev-95542-deployment",
-          "s3Key": "amplify-builds/checktlambda-65304d79732b7a794a5a-build.zip"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-checkt-dev-95542-authRole",
+            "UnauthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-95542-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::353049360875:role/amplify-checkt-dev-95542-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-checkt-dev-95542-deployment",
+            "UnauthRoleName": "amplify-checkt-dev-95542-unauthRole",
+            "StackName": "amplify-checkt-dev-95542",
+            "StackId": "arn:aws:cloudformation:us-west-2:353049360875:stack/amplify-checkt-dev-95542/4493f870-93d4-11eb-a8c0-0ab064636201",
+            "AmplifyAppId": "d2tz6gamr0cndr"
         },
-        "storeslambda": {
-          "deploymentBucketName": "amplify-checkt-dev-95542-deployment",
-          "s3Key": "amplify-builds/storeslambda-4a4b446a5536684f4656-build.zip"
+        "categories": {
+            "auth": {
+                "checktfee7a8ce": {}
+            },
+            "function": {
+                "checktlambda": {
+                    "deploymentBucketName": "amplify-checkt-dev-95542-deployment",
+                    "s3Key": "amplify-builds/checktlambda-65304d79732b7a794a5a-build.zip"
+                },
+                "storeslambda": {
+                    "deploymentBucketName": "amplify-checkt-dev-95542-deployment",
+                    "s3Key": "amplify-builds/storeslambda-4a4b446a5536684f4656-build.zip"
+                }
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d2tz6gamr0cndr",
+                    "type": "manual"
+                }
+            }
         }
-      }
     }
-  }
 }
