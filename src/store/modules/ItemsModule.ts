@@ -45,14 +45,7 @@ const actions = {
     await API.del('checktapi', `/stores/object/id/${id}`, {})
     commit('removeStore', id)
   },
-  // searchItems({ commit }: { commit: Function }, name: string) {
-    
-  //     const payload = state.items.filter((item: Product) => item.store.name.match(name))
-  //   console.log(payload)
-  //   commit('setFilteredItems', payload)
-  
-    
-  // },
+
 
 }
 
@@ -62,6 +55,9 @@ const mutations = {
     state.authState = authState;
     state.user = authData;
   })),
+  toggleBought: (state: State, id: String) => {
+    const foundIndex = state.items.findIndex((item) => item.id === id)
+  state.items[foundIndex].bought = !state.items[foundIndex].bought},
   clearAuth: (state: State) => state.unsubscribeAuth(),
   // coming from actions
   setItems: (state: State, items: Product[]) => (state.items = items),
