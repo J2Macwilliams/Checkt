@@ -2,13 +2,13 @@
   <select
     v-if="allStores.length > 0"
     v-model="store"
-    @change="search"
+    
     class="m-6 text-lg border-2 border-green-800 rounded-lg p-2"
   >
   <option value="">all stores</option>
     <option
       :key="store.id"
-      v-bind:value="{ name: store.name }"
+      v-bind:value="store.name"
       v-for="store in allStores"
     >
       {{ store.name }}
@@ -17,7 +17,7 @@
   <div
     class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-flow-row w-5/6"
   >
-    <div :key="item.id" v-for="item in filteredItems">
+    <div :key="item.id" v-for="item in filteredItems(this.store)">
       <Item :item="item" />
     </div>
   </div>
@@ -34,17 +34,18 @@ export default defineComponent({
   components: { Item },
   data() {
     return {
-      store: {name: String},
+      store: '',
     };
   },
   methods: {
-    ...mapActions(["fetchItems", "searchItems"]),
-    search() {
-      this.searchItems(this.store.name)
-    }
+    ...mapActions(["fetchItems", ]),
+    // search() {
+    //   console.log(this.store)
+    //  this.filteredItems(this.store);
+    // }
   },
   computed: {
-    ...mapGetters(["allItems", "allStores", "filteredItems"]),
+    ...mapGetters([ "allStores", "filteredItems"]),
 
   },
   created() {

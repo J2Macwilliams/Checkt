@@ -1,15 +1,16 @@
 export interface State {
-items: Product[],
-filteredItems: Product[],
+items: any[],
 user: any,
 authState: any,
-unsubscribeAuth: () => void,
+unsubscribeAuth: any,
 isNavOpen: boolean,
-stores: Store[]
+stores: Store[],
+
 }
 export interface User {
 username: string,
-attributes: Attributes
+attributes: Attributes,
+
 }
 
 export type Product = {
